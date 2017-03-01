@@ -50,9 +50,23 @@ namespace EjemploEF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Cities.Add(city);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Cities.Add(city);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    if (e.InnerException.InnerException.Message.Contains("_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, "La ciudad ya está registrada");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, e.Message);
+                    }
+                }
             }
 
             return View(city);

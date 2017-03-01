@@ -52,9 +52,23 @@ namespace EjemploEF.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    if (e.InnerException.InnerException.Message.Contains("_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, "La dirección de e-mail del usuario ya está registrada");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, e.Message);
+                    }
+                }
             }
 
             ViewBag.CityId = new SelectList(db.Cities, "CityId", "Name", user.CityId);
