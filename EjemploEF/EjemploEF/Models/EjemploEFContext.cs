@@ -14,5 +14,7 @@ namespace EjemploEF.Models
         }
 
         public System.Data.Entity.DbSet<EjemploEF.Models.City> Cities { get; set; }
+
+        public System.Data.Entity.DbSet<EjemploEF.Models.User> Users { get; set; }
     }
 }

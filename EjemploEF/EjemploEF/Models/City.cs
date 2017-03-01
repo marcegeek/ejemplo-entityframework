@@ -17,5 +17,7 @@ namespace EjemploEF.Models
             MinimumLength = 3)]
         [Index("CityName_Index", IsUnique = true)]
         public string Name { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }
