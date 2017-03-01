@@ -31,7 +31,7 @@ namespace EjemploEF.Models
 
         [Required(ErrorMessage = "El campo es requerido")]
         [StringLength(100, ErrorMessage = "El campo debe tener como máximo 100 caracteres")]
-        [RegularExpression("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a - z0 - 9])?",
+        [RegularExpression("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
             ErrorMessage = "El e-mail no tiene un formato válido")]
         [Index("UserEmail_Index", IsUnique = true)]
         public string Email { get; set; }
