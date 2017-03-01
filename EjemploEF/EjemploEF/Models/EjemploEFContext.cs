@@ -12,5 +12,7 @@ namespace EjemploEF.Models
         {
 
         }
+
+        public System.Data.Entity.DbSet<EjemploEF.Models.City> Cities { get; set; }
     }
 }
